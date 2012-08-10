@@ -11,19 +11,9 @@ LOCAL_C_INCLUDES := $(LOCAL_PATH) \
 
 LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)
 
-ifeq ($(DEBUG),1)
-LOCAL_CFLAGS := -D__PLATFORM__Android \
-                -DOGG_DEBUG_LEVEL=3 \
-                -DOGG_VERSION_TAG_NAME="\"1.3.0-debug\""
-                -DTREMOR_DEBUG_LEVEL=3 \
-                -DTREMOR_VERSION_TAG_NAME="\"1.0.2-debug\""
-else
-LOCAL_CFLAGS := -D__PLATFORM__Android \
-                -DOGG_DEBUG_LEVEL=1 \
-                -DOGG_VERSION_TAG_NAME="\"1.3.0-release\""
-                -DTREMOR_DEBUG_LEVEL=1 \
+LOCAL_CFLAGS := -DOGG_VERSION_TAG_NAME="\"1.3.0-$(BUILD_DIRECTORY_MODE)\""
                 -DTREMOR_VERSION_TAG_NAME="\"1.0.2-release\""
-endif
+
 
 # load the common sources file of the platform
 include $(LOCAL_PATH)/file.mk
