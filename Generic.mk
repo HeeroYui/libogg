@@ -5,7 +5,7 @@ include $(CLEAR_VARS)
 # name of the librairy
 LOCAL_MODULE := ogg
 
-LOCAL_STATIC_LIBRARIES := etk
+LOCAL_LIBRARIES := etk
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/tremor/ \
                     $(LOCAL_PATH)/ogg/
