@@ -28,6 +28,10 @@ def create(target):
 		'tremor/mapping0.c'
 		])
 	
+	if target.name=="Android":
+		myModule.compile_flags_CC("-DBYTE_ORDER=1")
+		myModule.compile_flags_CC("-DBIG_ENDIAN=0")
+		myModule.compile_flags_CC("-DLITTLE_ENDIAN=1")
 	
 	myModule.add_export_path(tools.get_current_path(__file__))
 	myModule.add_path(tools.get_current_path(__file__)+"/ogg/")
