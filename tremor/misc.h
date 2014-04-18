@@ -40,22 +40,19 @@
 #if !(defined WIN32 && defined WINCE)
 #include <sys/types.h>
 #endif
-
-#if BYTE_ORDER==LITTLE_ENDIAN
-union magic {
-  struct {
-    ogg_int32_t lo;
-    ogg_int32_t hi;
-  } halves;
-  ogg_int64_t whole;
-};
-#endif 
-
 #if BYTE_ORDER==BIG_ENDIAN
 union magic {
+	struct {
+		ogg_int32_t hi;
+		ogg_int32_t lo;
+	} halves;
+	ogg_int64_t whole;
+};
+#else
+union magic {
   struct {
-    ogg_int32_t hi;
     ogg_int32_t lo;
+    ogg_int32_t hi;
   } halves;
   ogg_int64_t whole;
 };
