@@ -27,7 +27,7 @@ def create(target):
 		'tremor/info.c',
 		'tremor/mapping0.c'
 		])
-	
+	myModule.compile_version_CC(1989, gnu=True)
 	myModule.compile_flags_CC("-Wno-duplicate-decl-specifier")
 	if target.name=="Android":
 		myModule.compile_flags_CC("-DBYTE_ORDER=1")
