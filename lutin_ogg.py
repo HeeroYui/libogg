@@ -1,7 +1,7 @@
 #!/usr/bin/python
-import lutinModule as module
-import lutinTools as tools
-import lutinDebug as debug
+import lutin.module as module
+import lutin.tools as tools
+import lutin.debug as debug
 
 def get_desc():
 	return "ogg : Ogg-tremor library for ogg audio decoding"
@@ -28,11 +28,11 @@ def create(target):
 		'tremor/mapping0.c'
 		])
 	myModule.compile_version_CC(1989, gnu=True)
-	myModule.compile_flags_CC("-Wno-duplicate-decl-specifier")
+	myModule.compile_flags('c', "-Wno-duplicate-decl-specifier")
 	if target.name=="Android":
-		myModule.compile_flags_CC("-DBYTE_ORDER=1")
-		myModule.compile_flags_CC("-DBIG_ENDIAN=0")
-		myModule.compile_flags_CC("-DLITTLE_ENDIAN=1")
+		myModule.compile_flags('c', "-DBYTE_ORDER=1")
+		myModule.compile_flags('c', "-DBIG_ENDIAN=0")
+		myModule.compile_flags('c', "-DLITTLE_ENDIAN=1")
 	
 	myModule.add_export_path(tools.get_current_path(__file__))
 	myModule.add_path(tools.get_current_path(__file__)+"/ogg/")
